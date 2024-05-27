@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 
 export  const MyButton=() =>{
@@ -13,14 +13,18 @@ export  const MyButton=() =>{
     }
   },[]);
 
-  const handleClick=useCallback((e:any)=>{
-    alert("yahoo");
-  },[]);
+  const [count,setCount]=useState(0)
+  const handleClick=(e:any)=>{
+    setCount((count)=>count+1);
+  };
 
   return(
-    <a className="flex justify-center"
-      href="/about"
-      onClick={handleClick}
-    >ボタン</a>
+    <div>
+      <h1>{count}</h1>
+      <button type="button" className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+        onClick={handleClick}
+      >ボタン</button>
+
+    </div>
   );
 }
