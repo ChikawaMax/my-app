@@ -5,18 +5,21 @@ import { useCallback, useEffect, useState } from "react";
 
 export  const MyButton=() =>{
 
-  useEffect(()=>{
-    document.body.style.backgroundColor="red";
+  const [count,setCount]=useState(1)
 
+  const handleClick=useCallback((e:any)=>{
+    console.log(e.target);
+    if(count<10){
+      setCount((count)=>count+1);
+    }
+  },[count]);
+
+  useEffect(()=>{    
+    document.body.style.backgroundColor="red";
     return()=>{
       document.body.style.backgroundColor="";
     }
   },[]);
-
-  const [count,setCount]=useState(0)
-  const handleClick=(e:any)=>{
-    setCount((count)=>count+1);
-  };
 
   return(
     <div>
