@@ -8,6 +8,7 @@ export const MyButton = () => {
   const [count, setCount] = useState(1);
   const [text, setText] = useState("");
   const [isShow, setIsShow] = useState(true);
+  const [array, setArray] = useState<any[]>([]);
 
 
   const handleClick = useCallback(() => {
@@ -35,6 +36,16 @@ export const MyButton = () => {
     setIsShow((prevIsShow) => !prevIsShow);
   }, [])
 
+  const handleAdd = useCallback(() => {
+    setArray((prevArray) => {
+      if (prevArray.some((item) => item === text)) {
+        alert("すでに同じ要素が存在しています。")
+        return prevArray
+      }
+      return [...prevArray, text]
+    })
+  }, [text])
+
   return (
     <div>
       {isShow ? <h1>{count}</h1> : null}
@@ -46,6 +57,15 @@ export const MyButton = () => {
       >{isShow ? "非表示" : "表示"}</button>
 
       <input className="bg-blue-700" type="text" value={text} onChange={handleChange} />
+
+      <button onClick={handleAdd}>追加</button>
+
+      <ul>
+        {array.map((item) => {
+          return <li key={item}>{item}</li>
+        })}
+
+      </ul>
     </div>
   );
 }
