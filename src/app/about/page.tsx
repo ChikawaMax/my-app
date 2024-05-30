@@ -5,7 +5,6 @@ import { Main } from "../component/main";
 export default function Home() {
   return (
     <div>
-      <div>aaa</div>
       <MyButton />
       <Header />
       <Main

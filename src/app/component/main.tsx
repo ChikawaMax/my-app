@@ -1,26 +1,65 @@
+"use client"
+
 import Image from "next/image";
 import { Links } from "./links";
+import { useCallback, useState } from "react";
 
-type Object={
-  name:string
-  age:number
-  color:string
+const ITEMS = [{
+  href: "https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app",
+  title: "Introduction",
+  description: "Find in-depth information about Next.js features and API.",
+},
+{
+  href: "https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app",
+  title: "Learn",
+  description: "Learn about Next.js in an interactive course with quizzes!",
+},
+{
+  href: "https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app",
+  title: "Templates",
+  description: "Explore starter templates for Next.js.",
+},
+{
+  href: "https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app",
+  title: "Deploy",
+  description: "Instantly deploy your Next.js site to a shareable URL with Vercel.",
+},
+{
+  href: "",
+  title: "モカ",
+  description: "本間もかちゃん",
+},
+]
+
+type Object = {
+  name: string
+  age: number
+  color: string
 }
 
-type Props ={
-    name:string;
-    obj:Object;
+type Props = {
+  name: string;
+  obj: Object;
 }
 
-export const Main=({name,obj}:Props) =>{
+export const Main = ({ name, obj }: Props) => {
+
+  const [items, setItems] = useState(ITEMS)
+  const handleReduce = useCallback(() => {
+    setItems((prevItems) => {
+      return prevItems.slice(0, prevItems.length - 1)
+    })
+  }, [])
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <div>{items.length}</div>
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-            {name} Page
+          {name} Page
         </p>
         <p>
-            {obj.name}は{obj.age}歳で{obj.color}色です。
+          {obj.name}は{obj.age}歳で{obj.color}色です。
         </p>
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
           <a
@@ -52,8 +91,8 @@ export const Main=({name,obj}:Props) =>{
           priority
         />
       </div>
-      <Links />
-      
+      <Links items={items} handleReduce={handleReduce} />
+
     </main>
   );
 }

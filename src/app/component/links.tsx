@@ -1,38 +1,12 @@
-const ITEMS=[{
-              href:"https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app",
-              title:"Introduction",
-              description:"Find in-depth information about Next.js features and API.",
-            },
-            {
-              href:"https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app",
-              title:"Learn",
-              description:"Learn about Next.js in an interactive course with quizzes!",
-            },
-            {
-              href:"https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app",
-              title:"Templates",
-              description:"Explore starter templates for Next.js.",
-            },
-            {
-              href:"https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app",
-              title:"Deploy",
-              description:"Instantly deploy your Next.js site to a shareable URL with Vercel.",
-            },
-            {
-              href:"",
-              title:"モカ",
-              description:"本間もかちゃん",
-            },
-]
 
 
+export const Links = (Props: any) => {
 
-export  const Links=() =>{
   return (
     <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-
-      {ITEMS.map(item => {
-        return(
+      <button onClick={Props.handleReduce}>減らす</button>
+      {Props.items.map((item: any) => {
+        return (
           <a
             key={item.href}
             href={item.href}
@@ -41,7 +15,7 @@ export  const Links=() =>{
             rel="noopener noreferrer"
           >
             <h2 className="mb-3 text-2xl font-semibold">
-              {item.title+" "}
+              {item.title + " "}
               <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
                 -&gt;
               </span>
