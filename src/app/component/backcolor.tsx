@@ -1,6 +1,6 @@
 "use client"
 
-import { bgChange } from "../hooks/bgChange";
+import { BgChange } from "../hooks/bgChange";
 import { useCounter } from "../hooks/useCounter";
 import { useInputarray } from "../hooks/useInputarray";
 
@@ -8,7 +8,7 @@ export const MyButton = () => {
 
   const { count, isShow, handleClick, handleDisplay } = useCounter();
   const { text, array, handleAdd, handleChange } = useInputarray();
-  bgChange();
+  BgChange();
 
   return (
     <div>
