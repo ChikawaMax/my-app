@@ -6,14 +6,14 @@ import { useInputarray } from "../../hooks/useInputarray";
 
 export const MyButtonabout = () => {
 
-    const { count, isShow, handleClick, handleDisplay } = useCounter();
+    const { isShow, doublecount, handleClick, handleDisplay } = useCounter();
     const { text, array, handleAdd, handleChange } = useInputarray();
     BgChange();
 
     return (
         <div>
 
-            {isShow ? <h1>{count}</h1> : null}
+            {isShow ? <h1>{doublecount}</h1> : null}
 
             <button className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
                 onClick={handleDisplay}
