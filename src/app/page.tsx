@@ -1,19 +1,19 @@
-import { MyButton } from "./component/backcolor";
 import { Header } from "./component/header";
 import { Main } from "./component/main";
+import { MyButtonindex } from "./component/mybutton/Index";
 
 
 export default function Home() {
 
   return (
     <div>
-      <MyButton />
+      <MyButtonindex />
       <Header />
-      <Main 
+      <Main
         name="Normal"
-        obj={{name:"モカ",age:6,color:"茶"}}
+        obj={{ name: "モカ", age: 6, color: "茶" }}
       />
     </div>
-    
+
   );
 }

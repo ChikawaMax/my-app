@@ -1,11 +1,11 @@
-import { MyButton } from "../component/backcolor";
 import { Header } from "../component/header";
 import { Main } from "../component/main";
+import { MyButtonabout } from "../component/mybutton/about";
 
 export default function Home() {
   return (
     <div>
-      <MyButton />
+      <MyButtonabout />
       <Header />
       <Main
         name="About"
